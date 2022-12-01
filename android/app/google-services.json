@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "52541213753",
+    "firebase_url": "https://inventaris-app23-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "inventaris-app23",
+    "storage_bucket": "inventaris-app23.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:52541213753:android:255106242f1baedd4191e8",
+        "android_client_info": {
+          "package_name": "com.example.inventaris_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "52541213753-6f32tn6qr38brk9j50b810ej24r3uihr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.inventaris_app",
+            "certificate_hash": "14822d3709b77a84f467658e91d957c0b22cf885"
+          }
+        },
+        {
+          "client_id": "52541213753-9hqh2oo9mhdeoilgqf175s7dhl43e1ij.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBU2TlOWmp7DozrPTLu8bARi0UmQtPefow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "52541213753-9hqh2oo9mhdeoilgqf175s7dhl43e1ij.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

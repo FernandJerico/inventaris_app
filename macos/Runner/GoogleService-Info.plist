@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>52541213753-9u0hutpl5ieqbvk847ecdi56nr0o8iqb.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.52541213753-9u0hutpl5ieqbvk847ecdi56nr0o8iqb</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>52541213753-6f32tn6qr38brk9j50b810ej24r3uihr.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCdY1UFsnwlWI2yVXToYAdKF8YhSdEN7nY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>52541213753</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.inventarisApp</string>
+	<key>PROJECT_ID</key>
+	<string>inventaris-app23</string>
+	<key>STORAGE_BUCKET</key>
+	<string>inventaris-app23.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:52541213753:ios:684ab01fa29c93794191e8</string>
+	<key>DATABASE_URL</key>
+	<string>https://inventaris-app23-default-rtdb.asia-southeast1.firebasedatabase.app</string>
+</dict>
+</plist>

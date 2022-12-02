@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:inventaris_app/firebase_options.dart';
 
 import 'app/modules/home/views/homepage_view.dart';
-import 'app/routes/app_pages.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,7 +13,7 @@ Future<void> main() async {
   );
 
   runApp(
-    GetMaterialApp(
+    const GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Inventaris App",
       home: HomePageView(),

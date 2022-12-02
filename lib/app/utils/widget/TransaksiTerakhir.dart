@@ -12,7 +12,7 @@ class TransaksiTerakhir extends StatelessWidget {
       height: 120,
       width: 375,
       decoration: BoxDecoration(
-          color: Color.fromARGB(199, 14, 35, 94),
+          color: const Color.fromARGB(199, 14, 35, 94),
           borderRadius: BorderRadius.circular(15)),
       child: Row(
         children: [
@@ -32,7 +32,7 @@ class TransaksiTerakhir extends StatelessWidget {
                           color: Color.fromARGB(255, 177, 212, 241),
                           fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
@@ -45,7 +45,7 @@ class TransaksiTerakhir extends StatelessWidget {
                             height: 63,
                             width: 11,
                             decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 177, 212, 241),
+                                color: const Color.fromARGB(255, 177, 212, 241),
                                 borderRadius: BorderRadius.circular(10)),
                             child: const Text(
                               "1",
@@ -55,7 +55,7 @@ class TransaksiTerakhir extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.only(top: 3),
+                          padding: const EdgeInsets.only(top: 3),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: const [

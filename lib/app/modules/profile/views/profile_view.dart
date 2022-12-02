@@ -4,13 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:inventaris_app/app/modules/home/views/home_view.dart';
-import 'package:inventaris_app/app/modules/items/views/items_view.dart';
-import 'package:inventaris_app/app/utils/widget/Saldo.dart';
 import 'package:inventaris_app/app/utils/widget/Stock.dart';
 import 'package:ionicons/ionicons.dart';
 
 import '../../../utils/widget/BottomNavbar.dart';
-import '../../../utils/widget/Item.dart';
 import '../../../utils/widget/TotalItem.dart';
 import '../controllers/profile_controller.dart';
 
@@ -127,12 +124,12 @@ class ProfileView extends GetView<ProfileController> {
                 Container(
                   padding: const EdgeInsets.only(top: 2, left: 8),
                   child: Row(
-                    children: [
-                      const TotalItem(),
-                      const SizedBox(
+                    children: const [
+                      TotalItem(),
+                      SizedBox(
                         width: 5,
                       ),
-                      const Stock(),
+                      Stock(),
                     ],
                   ),
                 ),

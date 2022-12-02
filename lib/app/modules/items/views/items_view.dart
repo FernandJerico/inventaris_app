@@ -10,7 +10,7 @@ class ItemsView extends GetView<ItemController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: Color.fromRGBO(239, 242, 247, 1),
       bottomNavigationBar: BottomNavbar(),
       body: Center(

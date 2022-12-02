@@ -21,7 +21,7 @@ class Item extends StatelessWidget {
             height: 90,
             width: 90,
             decoration: BoxDecoration(
-                color: Color.fromARGB(255, 177, 212, 241),
+                color: const Color.fromARGB(255, 177, 212, 241),
                 borderRadius: BorderRadius.circular(15)),
             child: const Icon(
               Icons.view_in_ar,
@@ -32,7 +32,7 @@ class Item extends StatelessWidget {
           Column(
             children: [
               Container(
-              padding: EdgeInsets.only(left: 15, top: 12),
+                padding: const EdgeInsets.only(left: 15, top: 12),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -43,7 +43,7 @@ class Item extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: const [
@@ -52,7 +52,7 @@ class Item extends StatelessWidget {
                               fontSize: 17,
                               color: Color.fromARGB(255, 177, 212, 241),
                             )),
-                            Text("Item!",
+                        Text("Item!",
                             style: TextStyle(
                               fontSize: 17,
                               color: Color.fromARGB(255, 177, 212, 241),

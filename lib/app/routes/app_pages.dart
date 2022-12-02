@@ -44,12 +44,12 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.ITEM,
-      page: () => ItemsView(),
+      page: () => const ItemsView(),
       binding: ItemBinding(),
     ),
     GetPage(
       name: _Paths.HISTORY,
-      page: () => HistoryView(),
+      page: () => const HistoryView(),
       binding: HistoryBinding(),
     ),
     GetPage(
@@ -59,7 +59,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.AUTH,
-      page: () => AuthView(),
+      page: () => const AuthView(),
       binding: AuthBinding(),
     ),
   ];

@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:inventaris_app/app/modules/home/views/home_view.dart';
 
 import '../../auth/views/auth_view.dart';
-import '../../items/views/items_view.dart';
 import '../controllers/home_controller.dart';
 
 class HomePageView extends GetView<HomeController> {

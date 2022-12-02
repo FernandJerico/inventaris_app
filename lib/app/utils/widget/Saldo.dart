@@ -9,20 +9,20 @@ class Saldo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 25),
+      padding: const EdgeInsets.only(top: 25),
       height: 180,
       width: 220,
       decoration: BoxDecoration(
-          color: Color.fromARGB(199, 14, 35, 94),
+          color: const Color.fromARGB(199, 14, 35, 94),
           borderRadius: BorderRadius.circular(15)),
       child: Column(
-        children:  [
+        children: [
           GestureDetector(
-            onTap: (){
+            onTap: () {
               print("object");
               ProfileView();
             },
-            child: Text(
+            child: const Text(
               "Saldo",
               style: TextStyle(
                 fontSize: 35,
@@ -31,10 +31,10 @@ class Saldo extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 50,
           ),
-          Text(
+          const Text(
             "Rp. 1.500.000,-",
             style: TextStyle(
               fontSize: 25,

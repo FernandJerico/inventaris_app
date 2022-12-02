@@ -37,7 +37,7 @@ class RegisterView extends GetView<RegisterController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(239, 242, 247, 100),
+      backgroundColor: const Color.fromRGBO(239, 242, 247, 100),
       body: SafeArea(
         child: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [

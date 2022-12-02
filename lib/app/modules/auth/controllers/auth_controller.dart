@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 
 class AuthController extends GetxController {
+  // ignore: todo
   //TODO: Implement AuthController
 
   final count = 0.obs;

@@ -16,14 +16,14 @@ class BottomNavbar extends StatelessWidget {
     return Container(
       color: Colors.white,
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 16),
         child: GNav(
             backgroundColor: Colors.white,
             color: Colors.black,
-            activeColor: Color.fromARGB(255, 0, 0, 0),
-            tabBackgroundColor: Color.fromARGB(255, 226, 222, 222),
+            activeColor: const Color.fromARGB(255, 0, 0, 0),
+            tabBackgroundColor: const Color.fromARGB(255, 226, 222, 222),
             gap: 6,
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             tabs: [
               GButton(
                 icon: Icons.home,
@@ -39,7 +39,7 @@ class BottomNavbar extends StatelessWidget {
                 text: "Items",
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return ItemsView();
+                    return const ItemsView();
                   }));
                 },
               ),
@@ -48,7 +48,7 @@ class BottomNavbar extends StatelessWidget {
                 text: "History",
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return HistoryView();
+                    return const HistoryView();
                   }));
                 },
               ),

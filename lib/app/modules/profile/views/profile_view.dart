@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:icony/icony_ikonate.dart';
 import 'package:inventaris_app/app/modules/home/views/home_view.dart';
 import 'package:inventaris_app/app/utils/widget/Stock.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:icony/icony.dart';
 
 import '../../../utils/widget/BottomNavbar.dart';
 import '../../../utils/widget/TotalItem.dart';
@@ -13,6 +15,10 @@ import '../controllers/profile_controller.dart';
 
 class ProfileView extends GetView<ProfileController> {
   final user = FirebaseAuth.instance.currentUser!;
+
+  Future signOut() async {
+    await FirebaseAuth.instance.signOut();
+  }
 
   ProfileView({super.key});
 
@@ -39,10 +45,9 @@ class ProfileView extends GetView<ProfileController> {
                     color: Theme.of(context).colorScheme.secondary,
                     shape: BoxShape.circle,
                   ),
-                  child: const Icon(
-                    Ionicons.pencil,
-                    color: Colors.black,
-                    size: 30,
+                  child: const Ikonate(
+                    Ikonate.edit,
+                    color: Colors.white,
                   ),
                 ),
               ),
@@ -168,7 +173,68 @@ class ProfileView extends GetView<ProfileController> {
                           height: 10,
                         ),
                       ],
-                    ))
+                    )),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 50,
+                  width: 300,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: Color.fromRGBO(98, 144, 142, 1),
+                  ),
+                  child: Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.settings,
+                          color: Colors.white,
+                        ),
+                        Text(
+                          ' Setting',
+                          style: GoogleFonts.montserrat(
+                              fontSize: 15,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                GestureDetector(
+                  onTap: signOut,
+                  child: Container(
+                    height: 50,
+                    width: 300,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Color.fromRGBO(98, 144, 142, 1),
+                    ),
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.logout,
+                            color: Colors.white,
+                          ),
+                          Text(
+                            ' Sign Out',
+                            style: GoogleFonts.montserrat(
+                                fontSize: 15,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ],

@@ -149,7 +149,7 @@ class ProfileView extends GetView<ProfileController> {
                 Container(
                     padding: const EdgeInsets.only(top: 25),
                     height: 80,
-                    width: 300,
+                    width: 310,
                     decoration: BoxDecoration(
                         color: const Color.fromARGB(199, 14, 35, 94),
                         borderRadius: BorderRadius.circular(15)),
@@ -179,7 +179,7 @@ class ProfileView extends GetView<ProfileController> {
                 ),
                 Container(
                   height: 50,
-                  width: 300,
+                  width: 310,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
                     color: Color.fromRGBO(98, 144, 142, 1),
@@ -210,7 +210,7 @@ class ProfileView extends GetView<ProfileController> {
                   onTap: signOut,
                   child: Container(
                     height: 50,
-                    width: 300,
+                    width: 310,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       color: Color.fromRGBO(98, 144, 142, 1),

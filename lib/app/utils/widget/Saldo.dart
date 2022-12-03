@@ -11,7 +11,7 @@ class Saldo extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(top: 25),
       height: 180,
-      width: 220,
+      width: 210,
       decoration: BoxDecoration(
           color: const Color.fromARGB(199, 14, 35, 94),
           borderRadius: BorderRadius.circular(15)),

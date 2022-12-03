@@ -38,25 +38,24 @@ class HistoryView extends GetView<HistoryController> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(bottom: 30),
+              padding: const EdgeInsets.only(left: 14, right: 14, bottom: 30),
               child: Container(
-                padding: EdgeInsets.only(left: 5, top: 8, bottom: 5),
-                height: 40,
-                width: 360,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10)),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Icon(
-                      Icons.search,
-                      size: 17,
-                      color: Colors.black,
+                child: TextField(
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(12),
                     ),
-                    SizedBox(width: 10),
-                    Text("Search.."),
-                  ],
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(
+                          color: Color.fromRGBO(98, 144, 142, 1)),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    hintText: 'Search...',
+                    fillColor: Colors.white,
+                    icon: Icon(Icons.search),
+                    filled: true,
+                  ),
                 ),
               ),
             ),

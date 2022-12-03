@@ -26,32 +26,35 @@ class ProfileView extends GetView<ProfileController> {
   Widget build(BuildContext context) {
     var profileInfo = Expanded(
       child: Column(children: [
-        Container(
-          height: 100,
-          width: 100,
-          margin: const EdgeInsets.only(top: 15),
-          child: Stack(
-            children: [
-              const CircleAvatar(
-                radius: 50,
-                backgroundImage: AssetImage('assets/images/avatar.jpg'),
-              ),
-              Align(
-                alignment: Alignment.bottomRight,
-                child: Container(
-                  height: 30,
-                  width: 30,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.secondary,
-                    shape: BoxShape.circle,
-                  ),
-                  child: const Ikonate(
-                    Ikonate.edit,
-                    color: Colors.white,
+        Padding(
+          padding: const EdgeInsets.only(top: 20),
+          child: Container(
+            height: 125,
+            width: 125,
+            margin: const EdgeInsets.only(top: 15),
+            child: Stack(
+              children: [
+                const CircleAvatar(
+                  radius: 60,
+                  backgroundImage: AssetImage('assets/images/avatar.jpg'),
+                ),
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: Container(
+                    height: 35,
+                    width: 35,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.secondary,
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Ikonate(
+                      Ikonate.edit,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
         const SizedBox(

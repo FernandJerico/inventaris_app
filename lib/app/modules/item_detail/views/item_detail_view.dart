@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+
 import '../../../utils/widget/BottomNavbar.dart';
 import '../../../utils/widget/Product.dart';
-import '../controllers/item_controller.dart';
+import '../../items/controllers/item_controller.dart';
 
 class ItemView extends GetView<ItemController> {
   final itemController = Get.put(ItemController());

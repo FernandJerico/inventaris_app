@@ -1,11 +1,15 @@
 import 'package:get/get.dart';
 
+import '../modules/add_items/bindings/add_items_binding.dart';
+import '../modules/add_items/views/add_items_view.dart';
 import '../modules/auth/bindings/auth_binding.dart';
 import '../modules/auth/views/auth_view.dart';
 import '../modules/history/bindings/history_binding.dart';
 import '../modules/history/views/history_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/item_detail/bindings/item_detail_binding.dart';
+import '../modules/item_detail/views/item_detail_view.dart';
 import '../modules/items/bindings/item_binding.dart';
 import '../modules/items/views/items_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -61,6 +65,16 @@ class AppPages {
       name: _Paths.AUTH,
       page: () => const AuthView(),
       binding: AuthBinding(),
+    ),
+    GetPage(
+      name: _Paths.ITEM_DETAIL,
+      page: () => ItemDetailView(),
+      binding: ItemDetailBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADD_ITEMS,
+      page: () => AddItemsView(),
+      binding: AddItemsBinding(),
     ),
   ];
 }

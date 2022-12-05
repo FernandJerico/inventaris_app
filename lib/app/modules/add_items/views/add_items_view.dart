@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:inventaris_app/app/modules/items/views/items_view.dart';
 
 import '../controllers/add_items_controller.dart';
 
@@ -19,7 +20,10 @@ class AddItemsView extends GetView<AddItemsController> {
                 child: Row(
                   children: [
                     GestureDetector(
-                      onTap: () => Get.toNamed('/item'),
+                      onTap: () => Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return ItemView();
+                      })),
                       child: Icon(
                         Icons.arrow_back,
                         color: Colors.black,

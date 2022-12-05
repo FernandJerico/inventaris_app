@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:inventaris_app/app/modules/add_items/views/add_items_view.dart';
 import '../../../utils/widget/BottomNavbar.dart';
 import '../../../utils/widget/Product.dart';
 import '../controllers/item_controller.dart';
@@ -114,7 +115,10 @@ class ItemView extends GetView<ItemController> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Get.toNamed('/add-items'),
+        onPressed: () =>
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return AddItemsView();
+        })),
         backgroundColor: Color.fromRGBO(98, 142, 156, 100),
         child: Icon(
           Icons.add,

@@ -1,125 +1,218 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-
 import '../../../utils/widget/BottomNavbar.dart';
-import '../../../utils/widget/Product.dart';
-import '../../items/controllers/item_controller.dart';
+import '../controllers/item_detail_controller.dart';
 
-class ItemView extends GetView<ItemController> {
-  final itemController = Get.put(ItemController());
+class ItemDetailView extends GetView<ItemDetailController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(239, 242, 247, 1),
       bottomNavigationBar: const BottomNavbar(),
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding:
-                  EdgeInsets.only(right: 18, top: 10, bottom: 15, left: 18),
-              child: GestureDetector(
-                onTap: () => Get.toNamed('/item-detail'),
-                child: Text(
-                  "Items",
-                  style: const TextStyle(
-                      fontSize: 24, fontWeight: FontWeight.bold),
-                ),
+        child: Center(
+          child: Container(
+            width: 480,
+            height: Get.height,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(
+                color: const Color.fromARGB(94, 80, 78, 78),
               ),
+              color: Colors.white,
             ),
-            SizedBox(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 18, left: 18),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        contentPadding:
-                            const EdgeInsets.only(left: 40, right: 10),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide: const BorderSide(color: Colors.white),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        prefixIcon: const Icon(
-                          Icons.search,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 18, left: 18),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      GestureDetector(
+                        onTap: () => Get.toNamed('/item'),
+                        child: const Icon(
+                          Icons.arrow_back,
                           color: Colors.black,
+                          size: 24,
                         ),
-                        hintText: 'Search',
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Container(
+                        height: 200,
+                        width: 200,
+                        padding: const EdgeInsets.all(8.0),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            image: const DecorationImage(
+                                image: NetworkImage(
+                                  'https://i.imgur.com/APmrQQB.jpeg',
+                                ),
+                                fit: BoxFit.cover)),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  padding: const EdgeInsets.only(
+                      bottom: 3, left: 18, top: 3, right: 18),
+                  width: Get.width,
+                  decoration: const BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: Color.fromARGB(94, 80, 78, 78),
+                        width: 1,
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 10,
+                  child: const Text(
+                    "Beng-beng",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w900,
+                      color: Color.fromRGBO(0, 0, 0, 67),
+                    ),
                   ),
-                  Row(
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.only(left: 18),
-                        child: Text(
-                          "Sort by :",
-                          style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w700),
-                        ),
+                ),
+                Container(
+                  padding: const EdgeInsets.only(
+                      bottom: 3, left: 18, top: 5, right: 18),
+                  width: Get.width,
+                  decoration: const BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: Color.fromARGB(94, 80, 78, 78),
+                        width: 1,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 7),
-                        child: Obx(
-                          () => DropdownButton<String>(
-                            value: itemController.selected.value == ""
-                                ? null
-                                : itemController.selected.value,
-                            onChanged: (newValue) {
-                              print(newValue);
-                              itemController.setSelected(newValue!);
-                            },
-                            items: itemController.items
-                                .map(
-                                  (e) => DropdownMenuItem(
-                                    value: e,
-                                    child: Text(e),
-                                  ),
-                                )
-                                .toList(),
-                          ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Center(
-                child: SingleChildScrollView(
-                  child: Column(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: const [
-                      Product(),
-                      Product(),
-                      Product(),
-                      Product(),
-                      Product(),
+                      Text(
+                        "Id: ",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w900,
+                          color: Color.fromRGBO(0, 0, 0, 67),
+                        ),
+                      ),
+                      Text(" 8196142770",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w900,
+                            color: Color.fromRGBO(0, 0, 0, 67),
+                          ))
                     ],
                   ),
                 ),
-              ),
-            )
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => Get.toNamed('/add-items'),
-        backgroundColor: Color.fromRGBO(98, 142, 156, 100),
-        child: Icon(
-          Icons.add,
-          color: Colors.black,
+                Container(
+                  padding: const EdgeInsets.only(
+                      bottom: 3, left: 18, top: 5, right: 18),
+                  width: Get.width,
+                  decoration: const BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: Color.fromARGB(94, 80, 78, 78),
+                        width: 1,
+                      ),
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Text(
+                        "Harga: ",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w900,
+                          color: Color.fromRGBO(0, 0, 0, 67),
+                        ),
+                      ),
+                      Text("Rp.2000",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w900,
+                            color: Color.fromRGBO(0, 0, 0, 67),
+                          ))
+                    ],
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.only(
+                      bottom: 3, left: 18, top: 5, right: 18),
+                  width: Get.width,
+                  decoration: const BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: Color.fromARGB(94, 80, 78, 78),
+                        width: 1,
+                      ),
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Text(
+                        "Stock: ",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w900,
+                          color: Color.fromRGBO(0, 0, 0, 67),
+                        ),
+                      ),
+                      Text("50",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w900,
+                            color: Color.fromRGBO(0, 0, 0, 67),
+                          ))
+                    ],
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.only(
+                      bottom: 3, left: 18, top: 5, right: 18),
+                  width: Get.width,
+                  decoration: const BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: Color.fromARGB(94, 80, 78, 78),
+                        width: 1,
+                      ),
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Text(
+                        "Total Harga: ",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w900,
+                          color: Color.fromRGBO(0, 0, 0, 67),
+                        ),
+                      ),
+                      Text("Rp.100.000",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w900,
+                            color: Color.fromRGBO(0, 0, 0, 67),
+                          ))
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );

@@ -48,7 +48,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.ITEM,
-      page: () => const ItemsView(),
+      page: () => ItemView(),
       binding: ItemBinding(),
     ),
     GetPage(

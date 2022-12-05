@@ -39,7 +39,7 @@ class BottomNavbar extends StatelessWidget {
                 text: "Items",
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return const ItemsView();
+                    return ItemView();
                   }));
                 },
               ),

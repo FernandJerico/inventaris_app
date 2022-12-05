@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:inventaris_app/app/modules/add_items/views/add_items_view.dart';
 import '../../../utils/widget/BottomNavbar.dart';
 import '../../../utils/widget/Product.dart';
+import '../../item_detail/views/item_detail_view.dart';
 import '../controllers/item_controller.dart';
 
 class ItemView extends GetView<ItemController> {
@@ -21,7 +22,10 @@ class ItemView extends GetView<ItemController> {
               padding:
                   EdgeInsets.only(right: 18, top: 10, bottom: 15, left: 18),
               child: GestureDetector(
-                onTap: () => Get.toNamed('/item-detail'),
+                onTap: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) {
+                  return ItemDetailView();
+                })),
                 child: Text(
                   "Items",
                   style: const TextStyle(

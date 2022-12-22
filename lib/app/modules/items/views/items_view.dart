@@ -19,17 +19,16 @@ class ItemView extends GetView<ItemController> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding:
-                  EdgeInsets.only(right: 18, top: 10, bottom: 15, left: 18),
+              padding: const EdgeInsets.only(
+                  right: 18, top: 10, bottom: 15, left: 18),
               child: GestureDetector(
                 onTap: () => Navigator.push(context,
                     MaterialPageRoute(builder: (context) {
                   return ItemDetailView();
                 })),
-                child: Text(
+                child: const Text(
                   "Items",
-                  style: const TextStyle(
-                      fontSize: 24, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
               ),
             ),
@@ -123,8 +122,8 @@ class ItemView extends GetView<ItemController> {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
           return AddItemsView();
         })),
-        backgroundColor: Color.fromRGBO(98, 142, 156, 100),
-        child: Icon(
+        backgroundColor: const Color.fromRGBO(98, 142, 156, 100),
+        child: const Icon(
           Icons.add,
           color: Colors.black,
         ),

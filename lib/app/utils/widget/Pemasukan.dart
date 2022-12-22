@@ -31,7 +31,7 @@ class Pemasukan extends StatelessWidget {
                           color: Color.fromARGB(255, 58, 52, 52),
                           fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
                     Row(
@@ -44,7 +44,7 @@ class Pemasukan extends StatelessWidget {
                             height: 40,
                             width: 8,
                             decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 50, 66, 78),
+                                color: const Color.fromARGB(255, 50, 66, 78),
                                 borderRadius: BorderRadius.circular(10)),
                             child: const Text(
                               "",
@@ -54,7 +54,7 @@ class Pemasukan extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.only(top: 3),
+                          padding: const EdgeInsets.only(top: 3),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: const [

@@ -185,13 +185,13 @@ class ProfileView extends GetView<ProfileController> {
                   width: 310,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    color: Color.fromRGBO(98, 144, 142, 1),
+                    color: const Color.fromRGBO(98, 144, 142, 1),
                   ),
                   child: Center(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.settings,
                           color: Colors.white,
                         ),
@@ -216,13 +216,13 @@ class ProfileView extends GetView<ProfileController> {
                     width: 310,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
-                      color: Color.fromRGBO(98, 144, 142, 1),
+                      color: const Color.fromRGBO(98, 144, 142, 1),
                     ),
                     child: Center(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.logout,
                             color: Colors.white,
                           ),

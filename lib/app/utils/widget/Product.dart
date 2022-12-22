@@ -14,7 +14,7 @@ class Product extends StatelessWidget {
         height: 80,
         width: 480,
         decoration: BoxDecoration(
-          color: Color.fromARGB(232, 255, 255, 255),
+          color: const Color.fromARGB(232, 255, 255, 255),
           borderRadius: BorderRadius.circular(15),
         ),
         child: Row(
@@ -37,7 +37,7 @@ class Product extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       'Beng-Beng',
                       style: TextStyle(
                         fontSize: 20,
@@ -45,44 +45,42 @@ class Product extends StatelessWidget {
                         color: Color.fromRGBO(0, 0, 0, 67),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
-                    Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Id :',
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w900,
-                              color: Color.fromRGBO(0, 0, 0, 67),
-                            ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: const [
+                        Text(
+                          'Id :',
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w900,
+                            color: Color.fromRGBO(0, 0, 0, 67),
                           ),
-                          Text(
-                            ' 8196142770',
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w900,
-                              color: Color.fromRGBO(0, 0, 0, 67),
-                            ),
+                        ),
+                        Text(
+                          ' 8196142770',
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w900,
+                            color: Color.fromRGBO(0, 0, 0, 67),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
               ),
             ),
-            SizedBox(width: 100),
+            const SizedBox(width: 100),
             Padding(
               padding: const EdgeInsets.only(right: 8),
               child: Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       '50',
                       style: TextStyle(
                         fontSize: 30,
@@ -90,13 +88,13 @@ class Product extends StatelessWidget {
                         color: Color.fromRGBO(0, 0, 0, 67),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 7,
                     ),
                     Container(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
+                        children: const [
                           Text(
                             'Rp.',
                             style: TextStyle(

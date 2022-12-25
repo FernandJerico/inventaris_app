@@ -12,8 +12,8 @@ class HistoryView extends GetView<HistoryController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(239, 242, 247, 1),
-      bottomNavigationBar: BottomNavbar(),
+      backgroundColor: const Color.fromRGBO(239, 242, 247, 1),
+      bottomNavigationBar: const BottomNavbar(),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -54,7 +54,7 @@ class HistoryView extends GetView<HistoryController> {
                     ),
                     hintText: 'Search...',
                     fillColor: Colors.white,
-                    prefixIcon: Icon(Icons.search),
+                    prefixIcon: const Icon(Icons.search),
                     filled: true,
                   ),
                 ),

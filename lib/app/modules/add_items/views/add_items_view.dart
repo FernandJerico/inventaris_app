@@ -50,7 +50,7 @@ class AddItemsView extends GetView<AddItemsController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      "Masukan Nama Barang :",
+                      "Masukkan Nama Barang :",
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,

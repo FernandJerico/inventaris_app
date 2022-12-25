@@ -24,14 +24,14 @@ class AddItemsView extends GetView<AddItemsController> {
                           MaterialPageRoute(builder: (context) {
                         return ItemView();
                       })),
-                      child: Icon(
+                      child: const Icon(
                         Icons.arrow_back,
                         color: Colors.black,
                         size: 24,
                       ),
                     ),
-                    SizedBox(width: 5),
-                    Text(
+                    const SizedBox(width: 5),
+                    const Text(
                       "Add Items",
                       style: TextStyle(
                         fontSize: 24,

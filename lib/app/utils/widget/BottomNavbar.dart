@@ -23,6 +23,9 @@ class BottomNavbar extends StatelessWidget {
             activeColor: const Color.fromARGB(255, 0, 0, 0),
             tabBackgroundColor: const Color.fromARGB(255, 226, 222, 222),
             gap: 6,
+            onTabChange: (index) {
+              print(index);
+            },
             padding: const EdgeInsets.all(16),
             tabs: [
               GButton(

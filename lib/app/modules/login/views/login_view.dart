@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:inventaris_app/app/utils/components/square_tile.dart';
 
 import '../controllers/login_controller.dart';
 
@@ -105,6 +106,23 @@ class LoginView extends GetView<LoginController> {
               const SizedBox(
                 height: 10,
               ),
+              Padding(
+                padding: const EdgeInsets.only(right: 25),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    GestureDetector(
+                      child: Text(
+                        'Forgot Password?',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
               //sign in button
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -127,7 +145,50 @@ class LoginView extends GetView<LoginController> {
                 ),
               ),
               const SizedBox(
-                height: 25,
+                height: 20,
+              ),
+              // or continue with
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Divider(
+                        thickness: 1,
+                        color: Colors.grey[400],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Text(
+                        'or continue with',
+                        style: TextStyle(color: Colors.grey[700]),
+                      ),
+                    ),
+                    Expanded(
+                      child: Divider(
+                        thickness: 1,
+                        color: Colors.grey[400],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                width: 40,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // google sign in
+                  SquareTile(imagePath: 'assets/images/google.png'),
+                  SizedBox(width: 10),
+                  // fb sign in
+                  SquareTile(imagePath: 'assets/images/facebook.png')
+                ],
+              ),
+              SizedBox(
+                width: 20,
               ),
               //not a member? register now
               Row(

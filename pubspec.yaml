@@ -16,6 +16,8 @@ dependencies:
     sdk: flutter
   ionicons: ^0.2.1
   icony: ^1.0.5
+  iconify: ^0.0.1
+  iconify_flutter: ^0.0.5
 
 dev_dependencies:
   flutter_lints: ^2.0.0

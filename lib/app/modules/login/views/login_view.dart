@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:inventaris_app/app/utils/components/square_tile.dart';
 
+import '../../../routes/app_pages.dart';
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
@@ -19,6 +20,7 @@ class LoginView extends GetView<LoginController> {
       email: _emailController.text.trim(),
       password: _passwordController.text.trim(),
     );
+    Get.offAllNamed(Routes.BOTTOM_NAVBAR);
   }
 
   @override
@@ -30,7 +32,7 @@ class LoginView extends GetView<LoginController> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(239, 242, 247, 100),
+      backgroundColor: const Color.fromRGBO(239, 242, 247, 1),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -199,7 +201,7 @@ class LoginView extends GetView<LoginController> {
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   GestureDetector(
-                    onTap: showRegisterView,
+                    onTap: () => Get.toNamed(Routes.REGISTER),
                     child: const Text(
                       ' Register Now',
                       style: TextStyle(

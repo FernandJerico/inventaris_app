@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/BottomNavbar/bindings/bottom_navbar_binding.dart';
+import '../modules/BottomNavbar/views/bottom_navbar_view.dart';
 import '../modules/add_items/bindings/add_items_binding.dart';
 import '../modules/add_items/views/add_items_view.dart';
 import '../modules/auth/bindings/auth_binding.dart';
@@ -75,6 +77,11 @@ class AppPages {
       name: _Paths.ADD_ITEMS,
       page: () => AddItemsView(),
       binding: AddItemsBinding(),
+    ),
+    GetPage(
+      name: _Paths.BOTTOM_NAVBAR,
+      page: () => const BottomNavbarView(),
+      binding: BottomNavbarBinding(),
     ),
   ];
 }

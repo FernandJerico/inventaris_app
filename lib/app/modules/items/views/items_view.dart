@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:inventaris_app/app/modules/add_items/views/add_items_view.dart';
-import '../../../utils/widget/BottomNavbar.dart';
 import '../../../utils/widget/Product.dart';
 import '../../item_detail/views/item_detail_view.dart';
 import '../controllers/item_controller.dart';
@@ -13,7 +12,6 @@ class ItemView extends GetView<ItemController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(239, 242, 247, 1),
-      bottomNavigationBar: const BottomNavbar(),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

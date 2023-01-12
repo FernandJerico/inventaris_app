@@ -4,6 +4,7 @@ class ProfileController extends GetxController {
   //TODO: Implement ProfileController
 
   final count = 0.obs;
+  var tabIndex = 0;
   @override
   void onInit() {
     super.onInit();

@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import '../../../utils/widget/BottomNavbar.dart';
 import '../controllers/item_detail_controller.dart';
 
 class ItemDetailView extends GetView<ItemDetailController> {
@@ -11,7 +10,6 @@ class ItemDetailView extends GetView<ItemDetailController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(239, 242, 247, 1),
-      bottomNavigationBar: const BottomNavbar(),
       body: SafeArea(
         child: Center(
           child: Container(

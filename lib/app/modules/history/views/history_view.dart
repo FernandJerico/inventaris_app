@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-
-import '../../../utils/widget/BottomNavbar.dart';
 import '../../../utils/widget/Pemasukan.dart';
 import '../../../utils/widget/Pengeluaran.dart';
 import '../controllers/history_controller.dart';
@@ -13,7 +11,6 @@ class HistoryView extends GetView<HistoryController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(239, 242, 247, 1),
-      bottomNavigationBar: const BottomNavbar(),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

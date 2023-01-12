@@ -8,6 +8,7 @@ class ItemController extends GetxController {
   final List<String> items = ['Name', 'Least', 'Most', 'Created'].obs;
   final selected = ''.obs;
   final String dropdownValue = "Name";
+  var tabIndex = 0;
 
   void setSelected(String value) {
     selected.value = value;

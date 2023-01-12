@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:inventaris_app/app/utils/widget/BottomNavbar.dart';
 
 import '../../../utils/widget/History.dart';
 import '../../../utils/widget/Item.dart';
@@ -19,7 +18,6 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(239, 242, 247, 1),
-      bottomNavigationBar: const BottomNavbar(),
       body: SingleChildScrollView(
         child: (SafeArea(
             child: Column(

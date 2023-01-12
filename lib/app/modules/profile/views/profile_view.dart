@@ -9,7 +9,7 @@ import 'package:inventaris_app/app/utils/widget/Stock.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:icony/icony.dart';
 
-import '../../../utils/widget/BottomNavbar.dart';
+import '../../../routes/app_pages.dart';
 import '../../../utils/widget/TotalItem.dart';
 import '../controllers/profile_controller.dart';
 
@@ -18,6 +18,7 @@ class ProfileView extends GetView<ProfileController> {
 
   Future signOut() async {
     await FirebaseAuth.instance.signOut();
+    Get.offAllNamed(Routes.LOGIN);
   }
 
   ProfileView({super.key});
@@ -117,7 +118,6 @@ class ProfileView extends GetView<ProfileController> {
     );
     return Scaffold(
       backgroundColor: const Color.fromRGBO(239, 242, 247, 1),
-      bottomNavigationBar: const BottomNavbar(),
       body: SingleChildScrollView(
         child: Column(
           children: [

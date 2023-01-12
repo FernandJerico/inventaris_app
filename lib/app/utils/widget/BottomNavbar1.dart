@@ -6,8 +6,8 @@ import '../../modules/history/views/history_view.dart';
 import '../../modules/items/views/items_view.dart';
 import '../../modules/profile/views/profile_view.dart';
 
-class BottomNavbar extends StatelessWidget {
-  const BottomNavbar({
+class BottomNavbar1 extends StatelessWidget {
+  const BottomNavbar1({
     Key? key,
   }) : super(key: key);
 

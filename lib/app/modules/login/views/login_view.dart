@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:inventaris_app/app/modules/auth/controllers/auth_controller.dart';
 import 'package:inventaris_app/app/utils/components/square_tile.dart';
 
 import '../../../routes/app_pages.dart';
@@ -11,6 +12,7 @@ import '../controllers/login_controller.dart';
 class LoginView extends GetView<LoginController> {
   final VoidCallback showRegisterView;
   LoginView({Key? key, required this.showRegisterView}) : super(key: key);
+  final authC = AuthController();
   // text controllers
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -62,7 +64,7 @@ class LoginView extends GetView<LoginController> {
               //email textfield
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: TextField(
+                child: TextFormField(
                   controller: _emailController,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
@@ -86,7 +88,7 @@ class LoginView extends GetView<LoginController> {
               //password textfield
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: TextField(
+                child: TextFormField(
                   obscureText: true,
                   controller: _passwordController,
                   decoration: InputDecoration(
@@ -183,7 +185,9 @@ class LoginView extends GetView<LoginController> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // google sign in
-                  SquareTile(imagePath: 'assets/images/google.png'),
+                  GestureDetector(
+                      onTap: () => authC.signInWithGoogle(),
+                      child: SquareTile(imagePath: 'assets/images/google.png')),
                   SizedBox(width: 10),
                   // fb sign in
                   SquareTile(imagePath: 'assets/images/facebook.png')

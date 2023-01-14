@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:icony/icony_ikonate.dart';
 import 'package:inventaris_app/app/modules/home/views/home_view.dart';
 import 'package:inventaris_app/app/utils/widget/Stock.dart';
@@ -18,6 +19,7 @@ class ProfileView extends GetView<ProfileController> {
 
   Future signOut() async {
     await FirebaseAuth.instance.signOut();
+    await GoogleSignIn().signOut();
     Get.offAllNamed(Routes.LOGIN);
   }
 
@@ -25,72 +27,70 @@ class ProfileView extends GetView<ProfileController> {
 
   @override
   Widget build(BuildContext context) {
-    var profileInfo = Expanded(
-      child: Column(children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 20),
-          child: Container(
-            height: 125,
-            width: 125,
-            margin: const EdgeInsets.only(top: 15),
-            child: Stack(
-              children: [
-                const CircleAvatar(
-                  radius: 60,
-                  backgroundImage: AssetImage('assets/images/avatar.jpg'),
-                ),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: Container(
-                    height: 35,
-                    width: 35,
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.secondary,
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Ikonate(
-                      Ikonate.edit,
-                      color: Colors.white,
-                    ),
+    var profileInfo = Column(children: [
+      Padding(
+        padding: const EdgeInsets.only(top: 20),
+        child: Container(
+          height: 125,
+          width: 125,
+          margin: const EdgeInsets.only(top: 15),
+          child: Stack(
+            children: [
+              const CircleAvatar(
+                radius: 60,
+                backgroundImage: AssetImage('assets/images/avatar.jpg'),
+              ),
+              Align(
+                alignment: Alignment.bottomRight,
+                child: Container(
+                  height: 35,
+                  width: 35,
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.secondary,
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Ikonate(
+                    Ikonate.edit,
+                    color: Colors.white,
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
-        const SizedBox(
-          height: 10,
+      ),
+      const SizedBox(
+        height: 10,
+      ),
+      Text(
+        'Fernand Jerico',
+        style: GoogleFonts.montserrat(fontSize: 30),
+      ),
+      const SizedBox(
+        height: 5,
+      ),
+      Text(
+        user.email!,
+        style: GoogleFonts.montserrat(fontSize: 17),
+      ),
+      const SizedBox(
+        height: 10,
+      ),
+      Container(
+        height: 40,
+        width: 160,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(30),
+          color: Theme.of(context).colorScheme.secondary,
         ),
-        Text(
-          'Fernand Jerico',
-          style: GoogleFonts.montserrat(fontSize: 30),
-        ),
-        const SizedBox(
-          height: 5,
-        ),
-        Text(
-          user.email!,
-          style: GoogleFonts.montserrat(fontSize: 17),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Container(
-          height: 40,
-          width: 160,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30),
-            color: Theme.of(context).colorScheme.secondary,
+        child: Center(
+          child: Text(
+            'Edit Profile',
+            style: GoogleFonts.montserrat(fontSize: 15),
           ),
-          child: Center(
-            child: Text(
-              'Edit Profile',
-              style: GoogleFonts.montserrat(fontSize: 15),
-            ),
-          ),
-        )
-      ]),
-    );
+        ),
+      )
+    ]);
 
     var header = Row(
       mainAxisAlignment: MainAxisAlignment.center,

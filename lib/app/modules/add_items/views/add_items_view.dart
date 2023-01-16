@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:inventaris_app/app/modules/items/views/items_view.dart';
 
+import '../../../routes/app_pages.dart';
 import '../controllers/add_items_controller.dart';
 
 class AddItemsView extends GetView<AddItemsController> {
@@ -20,10 +21,7 @@ class AddItemsView extends GetView<AddItemsController> {
                 child: Row(
                   children: [
                     GestureDetector(
-                      onTap: () => Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return ItemView();
-                      })),
+                      onTap: () => Get.back(),
                       child: const Icon(
                         Icons.arrow_back,
                         color: Colors.black,
@@ -50,7 +48,7 @@ class AddItemsView extends GetView<AddItemsController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      "Masukkan Nama Barang :",
+                      "Input Item ID :",
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
@@ -78,7 +76,7 @@ class AddItemsView extends GetView<AddItemsController> {
                       height: 10,
                     ),
                     const Text(
-                      "Masukan Jumlah Barang :",
+                      "Input Item Name :",
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
@@ -106,7 +104,7 @@ class AddItemsView extends GetView<AddItemsController> {
                       height: 10,
                     ),
                     const Text(
-                      "Masukan Harga / Barang :",
+                      "Enter Amount :",
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
@@ -134,7 +132,35 @@ class AddItemsView extends GetView<AddItemsController> {
                       height: 10,
                     ),
                     const Text(
-                      "Unggah Foto Barang :",
+                      "Input Price / Item :",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    TextField(
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Colors.white,
+                        contentPadding:
+                            const EdgeInsets.only(left: 15, right: 10),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: const BorderSide(color: Colors.white),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const Text(
+                      "Upload Photo :",
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,

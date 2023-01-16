@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -8,6 +9,20 @@ import '../controllers/item_controller.dart';
 
 class ItemView extends GetView<ItemController> {
   final itemController = Get.put(ItemController());
+
+  //documents IDs
+  List<String> docIDs = [];
+
+  //get docIDs
+  Future getDocIds() async {
+    await FirebaseFirestore.instance.collection('users').get().then(
+          (snapshot) => snapshot.docs.forEach((document) {
+            print(document.reference);
+            docIDs.add(document.reference.id);
+          }),
+        );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,24 +51,25 @@ class ItemView extends GetView<ItemController> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(right: 18, left: 18),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        contentPadding:
-                            const EdgeInsets.only(left: 40, right: 10),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide: const BorderSide(color: Colors.white),
+                    child: Container(
+                      child: TextField(
+                        decoration: InputDecoration(
+                          contentPadding:
+                              const EdgeInsets.only(left: 40, right: 10),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(color: Colors.grey),
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                                color: Color.fromRGBO(98, 144, 142, 1)),
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          hintText: 'Search...',
+                          fillColor: Colors.white,
+                          prefixIcon: const Icon(Icons.search),
+                          filled: true,
                         ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        prefixIcon: const Icon(
-                          Icons.search,
-                          color: Colors.black,
-                        ),
-                        hintText: 'Search',
                       ),
                     ),
                   ),
@@ -98,20 +114,22 @@ class ItemView extends GetView<ItemController> {
               ),
             ),
             Expanded(
-              child: Center(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: const [
-                      Product(),
-                      Product(),
-                      Product(),
-                      Product(),
-                      Product(),
-                    ],
-                  ),
-                ),
-              ),
-            )
+                child: ListView.builder(
+                    itemCount: 6,
+                    // itemCount: docIDs.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.only(
+                          right: 15,
+                          left: 15,
+                        ),
+                        child: ListBody(
+                          children: [
+                            Product(),
+                          ],
+                        ),
+                      );
+                    }))
           ],
         ),
       ),

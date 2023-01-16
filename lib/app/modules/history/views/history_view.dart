@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../utils/widget/Pemasukan.dart';
 import '../../../utils/widget/Pengeluaran.dart';
+import '../../item_detail/views/item_detail_view.dart';
 import '../controllers/history_controller.dart';
 
 class HistoryView extends GetView<HistoryController> {
@@ -13,24 +14,19 @@ class HistoryView extends GetView<HistoryController> {
       backgroundColor: const Color.fromRGBO(239, 242, 247, 1),
       body: SafeArea(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
               padding: const EdgeInsets.only(
-                left: 28,
-                right: 160,
-                top: 20,
-                bottom: 15,
-              ),
-              child: Container(
-                child: Column(
-                  children: const [
-                    Text(
-                      "Riwayat Transaksi",
-                      style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                    )
-                  ],
+                  right: 18, top: 10, bottom: 15, left: 18),
+              child: GestureDetector(
+                onTap: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) {
+                  return ItemDetailView();
+                })),
+                child: const Text(
+                  "History",
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
               ),
             ),
@@ -58,36 +54,20 @@ class HistoryView extends GetView<HistoryController> {
               ),
             ),
             Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: const [
-                    Pemasukan(),
-                    SizedBox(height: 10),
-                    Pengeluaran(),
-                    SizedBox(height: 10),
-                    Pemasukan(),
-                    SizedBox(height: 10),
-                    Pengeluaran(),
-                    SizedBox(height: 10),
-                    Pemasukan(),
-                    SizedBox(height: 10),
-                    Pengeluaran(),
-                    SizedBox(height: 10),
-                    Pemasukan(),
-                    SizedBox(height: 10),
-                    Pengeluaran(),
-                    SizedBox(height: 10),
-                    Pemasukan(),
-                    SizedBox(height: 10),
-                    Pengeluaran(),
-                    SizedBox(height: 10),
-                    Pemasukan(),
-                    SizedBox(height: 10),
-                    Pengeluaran(),
-                  ],
-                ),
-              ),
-            )
+                child: ListView.builder(
+                    itemCount: 6,
+                    // itemCount: docIDs.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.only(
+                            right: 15, left: 15, bottom: 10),
+                        child: ListBody(
+                          children: [
+                            Pemasukan(),
+                          ],
+                        ),
+                      );
+                    }))
           ],
         ),
       ),

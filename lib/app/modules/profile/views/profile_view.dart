@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +18,19 @@ import '../controllers/profile_controller.dart';
 class ProfileView extends GetView<ProfileController> {
   final user = FirebaseAuth.instance.currentUser!;
 
+  //documents IDs
+  List<String> docIDs = [];
+
+  //get docIDs
+  Future getDocIds() async {
+    await FirebaseFirestore.instance.collection('users').get().then(
+          (snapshot) => snapshot.docs.forEach((document) {
+            print(document.reference);
+            docIDs.add(document.reference.id);
+          }),
+        );
+  }
+
   Future signOut() async {
     await FirebaseAuth.instance.signOut();
     await GoogleSignIn().signOut();
@@ -24,6 +38,11 @@ class ProfileView extends GetView<ProfileController> {
   }
 
   ProfileView({super.key});
+
+  @override
+  void initState() {
+    getDocIds();
+  }
 
   @override
   Widget build(BuildContext context) {

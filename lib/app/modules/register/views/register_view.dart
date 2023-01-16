@@ -1,9 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../routes/app_pages.dart';
 import '../controllers/register_controller.dart';
 
 class RegisterView extends GetView<RegisterController> {
@@ -16,13 +18,41 @@ class RegisterView extends GetView<RegisterController> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmpasswordController = TextEditingController();
+  final _nameController = TextEditingController();
+  final _addressController = TextEditingController();
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    _confirmpasswordController.dispose();
+    _nameController.dispose();
+    _addressController.dispose();
+  }
 
   Future signUp() async {
     if (passwordConfirmed()) {
+      // create user
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: _emailController.text.trim(),
-          password: _passwordController.text.trim());
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+      Get.offAllNamed(Routes.BOTTOM_NAVBAR);
+      // add user details
+      addUserDetails(
+        _nameController.text.trim(),
+        _emailController.text.trim(),
+        _addressController.text.trim(),
+      );
     }
+  }
+
+  Future addUserDetails(String name, String email, String address) async {
+    await FirebaseFirestore.instance.collection('users').add({
+      'name': name,
+      'email': email,
+      'address': address,
+    });
   }
 
   bool passwordConfirmed() {
@@ -45,8 +75,8 @@ class RegisterView extends GetView<RegisterController> {
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
               //logo login
               SizedBox(
-                  height: 225,
-                  width: 225,
+                  height: 200,
+                  width: 200,
                   child: Image.asset('assets/images/register_page.png')),
               //hello again
               Text(
@@ -58,11 +88,35 @@ class RegisterView extends GetView<RegisterController> {
                 'Signing up is easy. It only takes a few steps',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 20,
+                  fontSize: 17,
                 ),
               ),
               const SizedBox(
                 height: 20,
+              ),
+              // name textfield
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: TextField(
+                  controller: _nameController,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(
+                          color: Color.fromRGBO(98, 144, 142, 1)),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    hintText: 'Name',
+                    fillColor: Colors.white,
+                    filled: true,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
               ),
               //email textfield
               Padding(
@@ -80,6 +134,30 @@ class RegisterView extends GetView<RegisterController> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                     hintText: 'Email',
+                    fillColor: Colors.white,
+                    filled: true,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              //address textfield
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: TextField(
+                  controller: _addressController,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(
+                          color: Color.fromRGBO(98, 144, 142, 1)),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    hintText: 'Address',
                     fillColor: Colors.white,
                     filled: true,
                   ),

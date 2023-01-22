@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/bi.dart';
+import 'package:iconify_flutter/icons/ep.dart';
+import 'package:iconify_flutter/icons/mdi.dart';
+import 'package:iconify_flutter/icons/ph.dart';
 import 'package:iconify_flutter/icons/ri.dart';
 
 import '../../history/views/history_view.dart';
@@ -42,27 +45,27 @@ class BottomNavbarView extends GetView<BottomNavbarController> {
               items: [
                 BottomNavigationBarItem(
                     icon: Iconify(
-                      Ri.home_5_line,
+                      Ph.house,
                       color: Colors.black,
                     ),
                     label: 'Home'),
                 BottomNavigationBarItem(
                   icon: Iconify(
-                    Bi.box2,
+                    Ep.goods,
                     color: Colors.black,
                   ),
                   label: 'Items',
                 ),
                 BottomNavigationBarItem(
                   icon: Iconify(
-                    Bi.clock_history,
+                    Mdi.clipboard_text_history_outline,
                     color: Colors.black,
                   ),
                   label: 'History',
                 ),
                 BottomNavigationBarItem(
                   icon: Iconify(
-                    Bi.person_badge,
+                    Mdi.user_outline,
                     color: Colors.black,
                   ),
                   label: 'Profile',

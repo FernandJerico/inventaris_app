@@ -10,6 +10,7 @@ class AuthController extends GetxController {
   //TODO: Implement AuthController
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   UserCredential? _userCredential;
+  FirebaseAuth auth = FirebaseAuth.instance;
   Future signInWithGoogle() async {
     // Trigger the authentication flow
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();

@@ -58,6 +58,14 @@ class AuthController extends GetxController {
     await GoogleSignIn().signOut();
   }
 
+  Stream<DocumentSnapshot<Map<String, dynamic>>> streamUsers(String email) {
+    return firestore.collection('users').doc(email).snapshots();
+  }
+
+  Stream<DocumentSnapshot<Map<String, dynamic>>> streamItem(String itemId) {
+    return firestore.collection('item').doc(itemId).snapshots();
+  }
+
   final count = 0.obs;
   @override
   void onInit() {

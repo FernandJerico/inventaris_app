@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:inventaris_app/app/modules/add_items/views/add_items_view.dart';
-import '../../../utils/widget/Product.dart';
+import 'package:inventaris_app/app/modules/auth/controllers/auth_controller.dart';
 import '../../item_detail/views/item_detail_view.dart';
 import '../controllers/item_controller.dart';
 
 class ItemView extends GetView<ItemController> {
   final itemController = Get.put(ItemController());
+  final authC = Get.find<AuthController>();
 
   //documents IDs
   List<String> docIDs = [];
@@ -114,21 +115,222 @@ class ItemView extends GetView<ItemController> {
               ),
             ),
             Expanded(
-                child: ListView.builder(
-                    itemCount: 6,
-                    // itemCount: docIDs.length,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.only(
-                          right: 15,
-                          left: 15,
-                        ),
-                        child: ListBody(
-                          children: [
-                            Product(),
-                          ],
-                        ),
-                      );
+                // stream users to get item list
+                child: StreamBuilder<DocumentSnapshot<Map<String, dynamic>>>(
+                    stream: authC.streamUsers(
+                      authC.auth.currentUser!.email!,
+                    ),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                      // get item id
+                      var itemId = (snapshot.data!.data()
+                          as Map<String, dynamic>)['item_id'] as List;
+                      return ListView.builder(
+                          itemCount: itemId.length,
+                          // itemCount: docIDs.length,
+                          itemBuilder: (context, index) {
+                            return StreamBuilder<
+                                    DocumentSnapshot<Map<String, dynamic>>>(
+                                stream: authC.streamItem(itemId[index]),
+                                builder: (context, snapshot2) {
+                                  if (snapshot2.connectionState ==
+                                      ConnectionState.waiting) {
+                                    return const Center(
+                                      child: CircularProgressIndicator(),
+                                    );
+                                  }
+                                  var dataItem = snapshot2.data!.data();
+                                  return Padding(
+                                    padding: const EdgeInsets.only(
+                                      right: 15,
+                                      left: 15,
+                                    ),
+                                    child: ListBody(
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(bottom: 10),
+                                          child: Container(
+                                            padding:
+                                                const EdgeInsets.only(top: 7),
+                                            height: 80,
+                                            width: 480,
+                                            decoration: BoxDecoration(
+                                              color: const Color.fromARGB(
+                                                  232, 255, 255, 255),
+                                              borderRadius:
+                                                  BorderRadius.circular(15),
+                                            ),
+                                            child: Row(
+                                              children: [
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 7, bottom: 7),
+                                                  child: SizedBox(
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                      child: const Image(
+                                                          image: NetworkImage(
+                                                        'https://i.imgur.com/APmrQQB.jpeg',
+                                                      )),
+                                                    ),
+                                                  ),
+                                                ),
+                                                StreamBuilder<
+                                                        DocumentSnapshot<
+                                                            Map<String,
+                                                                dynamic>>>(
+                                                    stream: authC.streamItem(
+                                                        itemId[index]),
+                                                    builder:
+                                                        (context, snapshot2) {
+                                                      if (snapshot2
+                                                              .connectionState ==
+                                                          ConnectionState
+                                                              .waiting) {
+                                                        return const Center(
+                                                          child:
+                                                              CircularProgressIndicator(),
+                                                        );
+                                                      }
+                                                      var dataItem = snapshot2
+                                                          .data!
+                                                          .data();
+                                                      return Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .only(left: 8),
+                                                        child: Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Text(
+                                                              dataItem![
+                                                                  'itemName'],
+                                                              style: TextStyle(
+                                                                fontSize: 20,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w900,
+                                                                color: Color
+                                                                    .fromRGBO(
+                                                                        0,
+                                                                        0,
+                                                                        0,
+                                                                        67),
+                                                              ),
+                                                            ),
+                                                            const SizedBox(
+                                                              height: 20,
+                                                            ),
+                                                            Row(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Text(
+                                                                  'ID : ' +
+                                                                      dataItem[
+                                                                          'itemId'],
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontSize:
+                                                                        12,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w900,
+                                                                    color: Color
+                                                                        .fromRGBO(
+                                                                            0,
+                                                                            0,
+                                                                            0,
+                                                                            67),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      );
+                                                    }),
+                                                const SizedBox(width: 120),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          right: 1),
+                                                  child: Expanded(
+                                                    child: Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Text(
+                                                          dataItem![
+                                                              'amountItem'],
+                                                          style: TextStyle(
+                                                            fontSize: 30,
+                                                            fontWeight:
+                                                                FontWeight.w900,
+                                                            color:
+                                                                Color.fromRGBO(
+                                                                    0,
+                                                                    0,
+                                                                    0,
+                                                                    67),
+                                                          ),
+                                                        ),
+                                                        const SizedBox(
+                                                          height: 7,
+                                                        ),
+                                                        Container(
+                                                          child: Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                'Rp.' +
+                                                                    dataItem[
+                                                                        'priceItem'] +
+                                                                    ',-',
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize: 12,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w900,
+                                                                  color: Color
+                                                                      .fromRGBO(
+                                                                          0,
+                                                                          0,
+                                                                          0,
+                                                                          67),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                });
+                          });
                     }))
           ],
         ),

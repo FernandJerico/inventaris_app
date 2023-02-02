@@ -277,8 +277,8 @@ class AddItemsView extends GetView<AddItemsController> {
                           controller.saveUpdateItem(
                               itemId: controller.idController.text,
                               itemName: controller.nameController.text,
-                              amountItem: controller.amountController.text,
-                              priceItem: controller.priceController.text);
+                              amountItem: controller.amountController.hashCode.toInt(),
+                              priceItem: controller.priceController.hashCode.toInt());
                         },
                         child: Container(
                           height: 70,

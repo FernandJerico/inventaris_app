@@ -45,8 +45,8 @@ class AddItemsController extends GetxController {
   void saveUpdateItem(
       {String? itemId,
       String? itemName,
-      String? amountItem,
-      String? priceItem}) async {
+      int? amountItem,
+      int? priceItem}) async {
     final isValid = formKey.currentState!.validate();
     if (!isValid) {
       return;

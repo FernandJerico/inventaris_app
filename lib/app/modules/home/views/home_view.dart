@@ -20,60 +20,65 @@ class HomeView extends GetView<HomeController> {
       backgroundColor: const Color.fromRGBO(239, 242, 247, 1),
       body: SingleChildScrollView(
         child: (SafeArea(
-            child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(right: 100, top: 10, bottom: 10),
-              child: Container(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      "Hello",
-                      style:
-                          TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      'Welcome ' + user.email!,
-                      style: const TextStyle(
-                          fontSize: 15, fontWeight: FontWeight.w600),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  padding: const EdgeInsets.only(top: 2, left: 8),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(right: 100, top: 10, bottom: 10),
+                child: Container(
                   child: Column(
-                    children: const [
-                      TotalItem(),
-                      SizedBox(height: 5),
-                      Stock(),
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Hello",
+                        style: TextStyle(
+                            fontSize: 35, fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        'Welcome ' + user.email!,
+                        style: const TextStyle(
+                            fontSize: 15, fontWeight: FontWeight.w600),
+                      ),
                     ],
                   ),
                 ),
-                const SizedBox(width: 5),
-                const Center(
-                  child: Saldo(),
-                )
-              ],
-            ),
-            const SizedBox(height: 30),
-            const TransaksiTerakhir(),
-            const SizedBox(height: 30),
-            const Item(),
-            const SizedBox(
-              height: 10,
-            ),
-            const History()
-          ],
-        ))),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    padding: const EdgeInsets.only(top: 2),
+                    child: Column(
+                      children: const [
+                        TotalItem(),
+                        SizedBox(height: 5),
+                        Stock(),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 5),
+                  const Center(
+                    child: Saldo(),
+                  )
+                ],
+              ),
+              Column(),
+              const SizedBox(height: 30),
+              const TransaksiTerakhir(),
+              const SizedBox(height: 30),
+              const Item(),
+              const SizedBox(
+                height: 10,
+              ),
+              const History()
+            ],
+          ),
+        )),
       ),
     );
   }

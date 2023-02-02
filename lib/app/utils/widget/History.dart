@@ -46,16 +46,16 @@ class History extends StatelessWidget {
                     const SizedBox(height: 10),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text("Klik disini untuk melihat semua",
+                      children: const [
+                        Text("Klik disini untuk melihat semua",
                             style: TextStyle(
                               fontSize: 17,
                               color: Color.fromARGB(255, 177, 212, 241),
                             )),
-                        const Text("Riwayat Transaksi!",
+                        Text("Riwayat Transaksi!",
                             style: TextStyle(
                               fontSize: 17,
-                              color: Color.fromARGB(255, 199, 214, 226),
+                              color: Color.fromARGB(255, 177, 212, 241),
                             )),
                       ],
                     ),

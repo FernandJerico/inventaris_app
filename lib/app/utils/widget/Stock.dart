@@ -10,7 +10,7 @@ class Stock extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(top: 12),
       height: 86.97,
-      width: 151.08,
+      width: 160,
       decoration: BoxDecoration(
           color: Color.fromARGB(199, 14, 35, 94),
           borderRadius: BorderRadius.circular(10)),

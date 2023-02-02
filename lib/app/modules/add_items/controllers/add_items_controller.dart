@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -45,8 +47,8 @@ class AddItemsController extends GetxController {
   void saveUpdateItem(
       {String? itemId,
       String? itemName,
-      String? amountItem,
-      String? priceItem}) async {
+      int? amountItem,
+      int? priceItem}) async {
     final isValid = formKey.currentState!.validate();
     if (!isValid) {
       return;

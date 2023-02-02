@@ -46,7 +46,8 @@ class ProfileView extends GetView<ProfileController> {
 
   @override
   Widget build(BuildContext context) {
-    var profileInfo = Column(children: [
+    var profileInfo =
+        Column(mainAxisAlignment: MainAxisAlignment.center, children: [
       Padding(
         padding: const EdgeInsets.only(top: 20),
         child: Container(
@@ -93,7 +94,7 @@ class ProfileView extends GetView<ProfileController> {
         style: GoogleFonts.montserrat(fontSize: 17),
       ),
       const SizedBox(
-        height: 10,
+        height: 20,
       ),
       Container(
         height: 40,
@@ -113,21 +114,10 @@ class ProfileView extends GetView<ProfileController> {
 
     var header = Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         const SizedBox(
           width: 10,
-        ),
-        InkWell(
-          onTap: (() {
-            Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return HomeView();
-            }));
-          }),
-          child: const Icon(
-            Icons.keyboard_arrow_left_outlined,
-            size: 30,
-          ),
         ),
         profileInfo,
         const SizedBox(
@@ -143,18 +133,17 @@ class ProfileView extends GetView<ProfileController> {
             const SizedBox(height: 30),
             header,
             const SizedBox(
-              height: 10,
+              height: 35,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  padding: const EdgeInsets.only(top: 2, left: 8),
                   child: Row(
                     children: const [
                       TotalItem(),
                       SizedBox(
-                        width: 5,
+                        width: 15,
                       ),
                       Stock(),
                     ],
@@ -163,7 +152,7 @@ class ProfileView extends GetView<ProfileController> {
               ],
             ),
             const SizedBox(
-              height: 10,
+              height: 20,
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -171,7 +160,7 @@ class ProfileView extends GetView<ProfileController> {
                 Container(
                     padding: const EdgeInsets.only(top: 25),
                     height: 80,
-                    width: 310,
+                    width: 335,
                     decoration: BoxDecoration(
                         color: const Color.fromARGB(199, 14, 35, 94),
                         borderRadius: BorderRadius.circular(15)),
@@ -197,11 +186,11 @@ class ProfileView extends GetView<ProfileController> {
                       ],
                     )),
                 const SizedBox(
-                  height: 10,
+                  height: 50,
                 ),
                 Container(
                   height: 50,
-                  width: 310,
+                  width: 200,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
                     color: const Color.fromRGBO(98, 144, 142, 1),
@@ -232,7 +221,7 @@ class ProfileView extends GetView<ProfileController> {
                   onTap: signOut,
                   child: Container(
                     height: 50,
-                    width: 310,
+                    width: 200,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       color: const Color.fromRGBO(98, 144, 142, 1),

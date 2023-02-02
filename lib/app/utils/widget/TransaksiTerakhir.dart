@@ -10,14 +10,14 @@ class TransaksiTerakhir extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(top: 7),
       height: 120,
-      width: 375,
+      width: 376,
       decoration: BoxDecoration(
           color: const Color.fromARGB(199, 14, 35, 94),
           borderRadius: BorderRadius.circular(15)),
       child: Row(
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 5),
+            padding: const EdgeInsets.only(left: 9),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -25,37 +25,40 @@ class TransaksiTerakhir extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      "Transaksi Terakhir : ",
-                      style: TextStyle(
-                          fontSize: 23,
-                          color: Color.fromARGB(255, 177, 212, 241),
-                          fontWeight: FontWeight.bold),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 3, top: 2),
+                      child: Text(
+                        "Transaksi Terakhir : ",
+                        style: TextStyle(
+                            fontSize: 23,
+                            color: Color.fromARGB(255, 177, 212, 241),
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                     const SizedBox(
-                      height: 10,
+                      height: 8,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(right: 5),
+                          padding: const EdgeInsets.only(left: 4, right: 7),
                           child: Container(
-                            height: 63,
-                            width: 11,
+                            height: 65,
+                            width: 8,
                             decoration: BoxDecoration(
                                 color: const Color.fromARGB(255, 177, 212, 241),
                                 borderRadius: BorderRadius.circular(10)),
                             child: const Text(
-                              "1",
+                              ".",
                               style: TextStyle(
                                   color: Color.fromARGB(255, 177, 212, 241)),
                             ),
                           ),
                         ),
                         Container(
-                          padding: const EdgeInsets.only(top: 3),
+                          padding: const EdgeInsets.only(top: 3, left: 2),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: const [
@@ -91,7 +94,7 @@ class TransaksiTerakhir extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            width: 25,
+            width: 18,
           ),
           Padding(
             padding: const EdgeInsets.only(top: 35, left: 20),

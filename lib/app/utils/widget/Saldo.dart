@@ -11,7 +11,7 @@ class Saldo extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(top: 25),
       height: 180,
-      width: 210,
+      width: 212,
       decoration: BoxDecoration(
           color: const Color.fromARGB(199, 14, 35, 94),
           borderRadius: BorderRadius.circular(15)),
@@ -25,14 +25,14 @@ class Saldo extends StatelessWidget {
             child: const Text(
               "Saldo",
               style: TextStyle(
-                fontSize: 35,
+                fontSize: 50,
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
           const SizedBox(
-            height: 50,
+            height: 30,
           ),
           const Text(
             "Rp. 1.500.000,-",

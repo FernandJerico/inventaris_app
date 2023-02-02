@@ -3,9 +3,18 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import '../../auth/controllers/auth_controller.dart';
+import '../../items/controllers/item_controller.dart';
 import '../controllers/item_detail_controller.dart';
 
 class ItemDetailView extends GetView<ItemDetailController> {
+  final itemController = Get.put(ItemController());
+  final authC = Get.find<AuthController>();
+  // final ItemName itemName = Get.arguments['itemName'];
+  // final Dt dt
+  // final List<Dt> dt;
+  // ItemDetailView({super.key, required this.dt});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +40,7 @@ class ItemDetailView extends GetView<ItemDetailController> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       GestureDetector(
-                        onTap: () => Get.toNamed('/item'),
+                        onTap: () => Get.back(),
                         child: const Icon(
                           Icons.arrow_back,
                           color: Colors.black,
@@ -39,12 +48,12 @@ class ItemDetailView extends GetView<ItemDetailController> {
                         ),
                       ),
                       const SizedBox(
-                        width: 10,
+                        width: 50,
                       ),
                       Container(
+                        alignment: Alignment.center,
                         height: 200,
                         width: 200,
-                        padding: const EdgeInsets.all(8.0),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             image: const DecorationImage(
@@ -71,13 +80,26 @@ class ItemDetailView extends GetView<ItemDetailController> {
                       ),
                     ),
                   ),
-                  child: const Text(
-                    "Beng-beng",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w900,
-                      color: Color.fromRGBO(0, 0, 0, 67),
-                    ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Nama Barang : ',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w900,
+                          color: Color.fromRGBO(0, 0, 0, 67),
+                        ),
+                      ),
+                      Text(
+                        Get.arguments['NamaBarang'],
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w900,
+                          color: Color.fromRGBO(0, 0, 0, 67),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 Container(
@@ -94,16 +116,17 @@ class ItemDetailView extends GetView<ItemDetailController> {
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
+                    children: [
                       Text(
-                        "Id: ",
+                        "ID: ",
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w900,
                           color: Color.fromRGBO(0, 0, 0, 67),
                         ),
                       ),
-                      Text(" 8196142770",
+                      Text(
+                        Get.arguments['ID'],
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w900,
@@ -126,7 +149,7 @@ class ItemDetailView extends GetView<ItemDetailController> {
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
+                    children: [
                       Text(
                         "Harga: ",
                         style: TextStyle(
@@ -135,7 +158,7 @@ class ItemDetailView extends GetView<ItemDetailController> {
                           color: Color.fromRGBO(0, 0, 0, 67),
                         ),
                       ),
-                      Text("Rp.2000",
+                      Text('Rp.${Get.arguments['Harga'].toString()},-',
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w900,
@@ -158,7 +181,7 @@ class ItemDetailView extends GetView<ItemDetailController> {
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
+                    children: [
                       Text(
                         "Stock: ",
                         style: TextStyle(
@@ -167,7 +190,7 @@ class ItemDetailView extends GetView<ItemDetailController> {
                           color: Color.fromRGBO(0, 0, 0, 67),
                         ),
                       ),
-                      Text("50",
+                      Text(Get.arguments['Stok'].toString(),
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w900,
@@ -190,7 +213,7 @@ class ItemDetailView extends GetView<ItemDetailController> {
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
+                    children: [
                       Text(
                         "Total Harga: ",
                         style: TextStyle(
@@ -199,7 +222,8 @@ class ItemDetailView extends GetView<ItemDetailController> {
                           color: Color.fromRGBO(0, 0, 0, 67),
                         ),
                       ),
-                      Text("Rp.100.000",
+                      Text('Rp.${Get.arguments['TotalHarga'].toString()},-',
+                      
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w900,

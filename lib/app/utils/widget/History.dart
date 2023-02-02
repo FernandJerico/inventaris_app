@@ -55,7 +55,7 @@ class History extends StatelessWidget {
                         const Text("Riwayat Transaksi!",
                             style: TextStyle(
                               fontSize: 17,
-                              color: Color.fromARGB(255, 199, 214, 226),
+                              color: Color.fromARGB(255, 177, 212, 241),
                             )),
                       ],
                     ),

@@ -13,6 +13,7 @@ import 'package:icony/icony.dart';
 
 import '../../../routes/app_pages.dart';
 import '../../../utils/widget/TotalItem.dart';
+import '../../../utils/widget/form.dart';
 import '../controllers/profile_controller.dart';
 
 class ProfileView extends GetView<ProfileController> {
@@ -46,9 +47,8 @@ class ProfileView extends GetView<ProfileController> {
 
   @override
   Widget build(BuildContext context) {
-    var profileInfo = Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
+    var profileInfo =
+        Column(mainAxisAlignment: MainAxisAlignment.center, children: [
       Padding(
         padding: const EdgeInsets.only(top: 20),
         child: Container(
@@ -141,7 +141,7 @@ class ProfileView extends GetView<ProfileController> {
               children: [
                 Container(
                   child: Row(
-                    children: const [
+                    children: [
                       TotalItem(),
                       SizedBox(
                         width: 15,
@@ -172,14 +172,14 @@ class ProfileView extends GetView<ProfileController> {
                             print("object");
                             ProfileView();
                           },
-                          child: const Text(
-                            "Saldo:  Rp. 1.500.000",
-                            style: TextStyle(
-                              fontSize: 25,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                          child: Obx(() => Text(
+                                '${FormNUM.convertToIdr(addController.saldo.toInt(), 2)}',
+                                style: TextStyle(
+                                  fontSize: 25,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              )),
                         ),
                         const SizedBox(
                           height: 10,
@@ -219,7 +219,10 @@ class ProfileView extends GetView<ProfileController> {
                   height: 10,
                 ),
                 GestureDetector(
-                  onTap: signOut,
+                  onTap: () {
+                    signOut();
+                    addController.clear();
+                  },
                   child: Container(
                     height: 50,
                     width: 200,

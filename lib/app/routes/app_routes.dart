@@ -13,6 +13,7 @@ abstract class Routes {
   static const ITEM_DETAIL = _Paths.ITEM_DETAIL;
   static const ADD_ITEMS = _Paths.ADD_ITEMS;
   static const BOTTOM_NAVBAR = _Paths.BOTTOM_NAVBAR;
+  static const TESTIS = _Paths.TESTIS;
 }
 
 abstract class _Paths {
@@ -27,4 +28,5 @@ abstract class _Paths {
   static const ITEM_DETAIL = '/item-detail';
   static const ADD_ITEMS = '/add-items';
   static const BOTTOM_NAVBAR = '/bottom-navbar';
+  static const TESTIS = '/testis';
 }

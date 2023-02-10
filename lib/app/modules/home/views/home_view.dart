@@ -54,7 +54,7 @@ class HomeView extends GetView<HomeController> {
                   Container(
                     padding: const EdgeInsets.only(top: 2),
                     child: Column(
-                      children: const [
+                      children: [
                         TotalItem(),
                         SizedBox(height: 5),
                         Stock(),
@@ -67,9 +67,7 @@ class HomeView extends GetView<HomeController> {
                   )
                 ],
               ),
-              Column(
-                
-              ),
+              Column(),
               const SizedBox(height: 30),
               const TransaksiTerakhir(),
               const SizedBox(height: 30),

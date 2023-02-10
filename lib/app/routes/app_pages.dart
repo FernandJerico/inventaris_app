@@ -20,6 +20,8 @@ import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
 import '../modules/register/bindings/register_binding.dart';
 import '../modules/register/views/register_view.dart';
+import '../modules/testis/bindings/testis_binding.dart';
+import '../modules/testis/views/testis_view.dart';
 
 part 'app_routes.dart';
 
@@ -82,6 +84,11 @@ class AppPages {
       name: _Paths.BOTTOM_NAVBAR,
       page: () => const BottomNavbarView(),
       binding: BottomNavbarBinding(),
+    ),
+    GetPage(
+      name: _Paths.TESTIS,
+      page: () => TestisView(),
+      binding: TestisBinding(),
     ),
   ];
 }

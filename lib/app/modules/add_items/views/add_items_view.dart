@@ -1,3 +1,7 @@
+import 'dart:ffi';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -8,7 +12,7 @@ import 'package:inventaris_app/app/modules/items/views/items_view.dart';
 import '../../../routes/app_pages.dart';
 
 class AddItemsView extends GetView<AddItemsController> {
-  final controller = Get.put(AddItemsController());
+  // final controller = Get.put(AddItemsController());
 
   void clearText() {
     controller.idController.clear();
@@ -17,8 +21,21 @@ class AddItemsView extends GetView<AddItemsController> {
     controller.priceController.clear();
   }
 
+  // Widget _createItem(context) {
+  // final AddItemsController = Get.find();
+
+  // }
+
   @override
   Widget build(BuildContext context) {
+    late String itemId;
+    late String itemName;
+    late int amountItem;
+    late int priceItem;
+    TextEditingController controllerItemId = TextEditingController();
+    TextEditingController controllerItemName = TextEditingController();
+    TextEditingController controllerAmountItem = TextEditingController();
+    TextEditingController controllerPriceItem = TextEditingController();
     return Scaffold(
       backgroundColor: const Color.fromRGBO(239, 242, 247, 1),
       body: SafeArea(
@@ -86,7 +103,7 @@ class AddItemsView extends GetView<AddItemsController> {
                               borderSide: BorderSide(
                                   color: Color.fromRGBO(98, 144, 142, 1))),
                         ),
-                        controller: controller.idController,
+                        controller: controllerItemId,
                         validator: ((value) {
                           if (value == null || value.isEmpty) {
                             return 'Can not be empty';
@@ -123,7 +140,7 @@ class AddItemsView extends GetView<AddItemsController> {
                               borderSide: BorderSide(
                                   color: Color.fromRGBO(98, 144, 142, 1))),
                         ),
-                        controller: controller.nameController,
+                        controller: controllerItemName,
                         validator: ((value) {
                           if (value == null || value.isEmpty) {
                             return 'Can not be empty';
@@ -147,7 +164,7 @@ class AddItemsView extends GetView<AddItemsController> {
                       TextFormField(
                         decoration: InputDecoration(
                           hintText: 'Amount',
-                          filled: true,
+                          // filled: t rue,
                           fillColor: Colors.white,
                           contentPadding:
                               const EdgeInsets.only(left: 15, right: 10),
@@ -160,7 +177,7 @@ class AddItemsView extends GetView<AddItemsController> {
                               borderSide: BorderSide(
                                   color: Color.fromRGBO(98, 144, 142, 1))),
                         ),
-                        controller: controller.amountController,
+                        controller: controllerAmountItem,
                         validator: ((value) {
                           if (value == null || value.isEmpty) {
                             return 'Can not be empty';
@@ -197,7 +214,7 @@ class AddItemsView extends GetView<AddItemsController> {
                               borderSide: BorderSide(
                                   color: Color.fromRGBO(98, 144, 142, 1))),
                         ),
-                        controller: controller.priceController,
+                        controller: controllerPriceItem,
                         validator: ((value) {
                           if (value == null || value.isEmpty) {
                             return 'Can not be empty';
@@ -274,11 +291,21 @@ class AddItemsView extends GetView<AddItemsController> {
                       padding: const EdgeInsets.all(1.0),
                       child: GestureDetector(
                         onTap: () {
-                          controller.saveUpdateItem(
-                              itemId: controller.idController.text,
-                              itemName: controller.nameController.text,
-                              amountItem: controller.amountController.hashCode.toInt(),
-                              priceItem: controller.priceController.hashCode.toInt());
+                          //OBX STOK
+                          var dataStok = int.parse(controllerAmountItem.text);
+                          var dataSald = int.parse(controllerPriceItem.text);
+                          controller.tambahStok(dataStok, dataSald);
+                          //
+                          FirebaseFirestore.instance.collection('item').add({
+                            'itemId': controllerItemId.text,
+                            'itemName': controllerItemName.text,
+                            'amountItem': int.parse(controllerAmountItem.text),
+                            'priceItem':
+                                int.parse(controllerPriceItem.text).toDouble(),
+                            'created': FirebaseAuth.instance.currentUser!.email,
+                          });
+
+                          Get.offAllNamed(Routes.BOTTOM_NAVBAR);
                         },
                         child: Container(
                           height: 70,

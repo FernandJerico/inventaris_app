@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class Stock extends StatelessWidget {
-  const Stock({
+import '../../modules/add_items/controllers/add_items_controller.dart';
+
+class Stock extends StatefulWidget {
+  Stock({
     Key? key,
   }) : super(key: key);
+  @override
+  State<Stock> createState() => _StockState();
+}
 
+final addController = Get.put(AddItemsController());
+
+class _StockState extends State<Stock> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -15,7 +24,7 @@ class Stock extends StatelessWidget {
           color: Color.fromARGB(199, 14, 35, 94),
           borderRadius: BorderRadius.circular(10)),
       child: Column(
-        children: const [
+        children: [
           Text(
             "Stock",
             style: TextStyle(
@@ -24,14 +33,14 @@ class Stock extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          Text(
-            "5000",
-            style: TextStyle(
-              fontSize: 32,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
-          )
+          Obx(() => Text(
+                addController.stok.toString(),
+                style: TextStyle(
+                  fontSize: 32,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ))
         ],
       ),
     );

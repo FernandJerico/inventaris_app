@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:inventaris_app/app/modules/add_items/controllers/add_items_controller.dart';
 import 'package:inventaris_app/app/modules/add_items/views/add_items_view.dart';
 import 'package:inventaris_app/app/modules/auth/controllers/auth_controller.dart';
-import 'package:inventaris_app/app/modules/testis/views/testis_view.dart';
 import '../../item_detail/views/item_detail_view.dart';
 import '../controllers/item_controller.dart';
 

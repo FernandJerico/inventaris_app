@@ -47,9 +47,10 @@ class RegisterView extends GetView<RegisterController> {
     }
   }
 
-  Future addUserDetails(String name, String email, String address) async {
+  Future addUserDetails(
+      String displayName, String email, String address) async {
     await FirebaseFirestore.instance.collection('users').add({
-      'name': name,
+      'name': displayName,
       'email': email,
       'address': address,
     });

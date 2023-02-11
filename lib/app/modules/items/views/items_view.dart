@@ -250,8 +250,7 @@ class ItemView extends GetView<ItemController> {
                                                       MainAxisAlignment.start,
                                                   children: [
                                                     Text(
-                                                      itemData.docs[index]
-                                                          ['itemId'],
+                                                      'Rp. ${itemData.docs[index]['priceItem'].toString()},-',
                                                       style: TextStyle(
                                                         fontSize: 12,
                                                         fontWeight:

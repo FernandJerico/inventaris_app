@@ -84,7 +84,7 @@ class ProfileView extends GetView<ProfileController> {
         height: 10,
       ),
       Text(
-        'Fernand Jerico',
+        'Fernand Jericoo',
         style: GoogleFonts.montserrat(fontSize: 30),
       ),
       const SizedBox(

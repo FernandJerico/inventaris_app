@@ -59,7 +59,7 @@ class AddItemsController extends GetxController {
 
     data != null ? stokk : a;
     data != null ? stokk : b;
-    int saldoo = (data!['saldo']).toInt();
+    int saldoo = (data['saldo']).toInt();
     // point += pointt;
     // int a = pointt += poinPlus;
     stok += stokk;

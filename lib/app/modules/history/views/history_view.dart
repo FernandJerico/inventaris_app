@@ -77,9 +77,12 @@ class HistoryView extends GetView<HistoryController> {
                   return Text("Loading");
                 }
                 final itemData = snapshot.requireData;
+
                 return ListView.builder(
                     itemCount: itemData.size,
                     itemBuilder: (context, index) {
+                      late int totalHarga = itemData.docs[index]['priceItem'] *
+                          itemData.docs[index]['amountItem'];
                       return Padding(
                         padding: const EdgeInsets.only(
                             right: 15, left: 15, bottom: 10),
@@ -223,7 +226,7 @@ class HistoryView extends GetView<HistoryController> {
                                             height: 5,
                                           ),
                                           Text(
-                                            'Rp. ${itemData.docs[index]['priceItem'].toString()},-',
+                                            'Rp. ${totalHarga.toString()},-',
                                             style: TextStyle(
                                                 fontSize: 15,
                                                 color: Color.fromARGB(

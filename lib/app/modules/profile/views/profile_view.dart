@@ -81,36 +81,20 @@ class ProfileView extends GetView<ProfileController> {
         ),
       ),
       const SizedBox(
-        height: 10,
+        height: 15,
       ),
       Text(
-        'Fernand Jerico',
-        style: GoogleFonts.montserrat(fontSize: 30),
+        user.displayName!,
+        style:
+            GoogleFonts.montserrat(fontSize: 20, fontWeight: FontWeight.bold),
       ),
       const SizedBox(
         height: 5,
       ),
       Text(
         user.email!,
-        style: GoogleFonts.montserrat(fontSize: 17),
+        style: GoogleFonts.montserrat(fontSize: 15),
       ),
-      const SizedBox(
-        height: 20,
-      ),
-      Container(
-        height: 40,
-        width: 160,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30),
-          color: Theme.of(context).colorScheme.secondary,
-        ),
-        child: Center(
-          child: Text(
-            'Edit Profile',
-            style: GoogleFonts.montserrat(fontSize: 15),
-          ),
-        ),
-      )
     ]);
 
     var header = Row(
@@ -144,7 +128,7 @@ class ProfileView extends GetView<ProfileController> {
                     children: [
                       TotalItem(),
                       SizedBox(
-                        width: 15,
+                        width: 10,
                       ),
                       Stock(),
                     ],
@@ -153,7 +137,7 @@ class ProfileView extends GetView<ProfileController> {
               ],
             ),
             const SizedBox(
-              height: 20,
+              height: 10,
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -187,11 +171,11 @@ class ProfileView extends GetView<ProfileController> {
                       ],
                     )),
                 const SizedBox(
-                  height: 50,
+                  height: 15,
                 ),
                 Container(
                   height: 50,
-                  width: 200,
+                  width: 335,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
                     color: const Color.fromRGBO(98, 144, 142, 1),
@@ -225,7 +209,7 @@ class ProfileView extends GetView<ProfileController> {
                   },
                   child: Container(
                     height: 50,
-                    width: 200,
+                    width: 335,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       color: const Color.fromRGBO(98, 144, 142, 1),

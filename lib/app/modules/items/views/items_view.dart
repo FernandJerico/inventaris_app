@@ -151,6 +151,7 @@ class ItemView extends GetView<ItemController> {
                             print(FirebaseAuth.instance.currentUser!.email);
                             // Get.to(TestisView());
                             Get.to(() => ItemDetailView(), arguments: {
+                              "Gambar": itemData.docs[index]['gambar'],
                               "NamaBarang": itemData.docs[index]['itemName'],
                               "Stok":
                                   itemData.docs[index]['amountItem'].toString(),
@@ -180,10 +181,13 @@ class ItemView extends GetView<ItemController> {
                                     child: SizedBox(
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(10),
-                                        child: const Image(
-                                            image: NetworkImage(
-                                          'https://i.imgur.com/APmrQQB.jpeg',
-                                        )),
+                                        child: Image(
+                                          image: NetworkImage(
+                                            itemData.docs[index]['gambar'],
+                                          ),
+                                          height: 70,
+                                          width: 70,
+                                        ),
                                       ),
                                     ),
                                   ),

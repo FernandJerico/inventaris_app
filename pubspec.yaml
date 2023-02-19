@@ -9,7 +9,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: any
   get: 4.6.5
-  firebase_core: 2.4.1
+  firebase_core: 2.6.1
   firebase_auth: ^4.2.0
   firebase_auth_web: ^5.2.4
   cloud_firestore: ^4.3.1
@@ -23,6 +23,7 @@ dependencies:
   date_time_picker: 2.1.0
   dropdown_search: ^5.0.5
   image_picker: ^0.8.6+2
+  firebase_storage: ^11.0.13
   get_cli: ^1.8.1
   google_sign_in: ^5.4.3
   google_sign_in_web: ^0.10.2+1

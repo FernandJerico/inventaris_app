@@ -36,6 +36,7 @@ class AddItemsView extends GetView<AddItemsController> {
     TextEditingController controllerItemName = TextEditingController();
     TextEditingController controllerAmountItem = TextEditingController();
     TextEditingController controllerPriceItem = TextEditingController();
+    final controllerGambar = TextEditingController();
     return Scaffold(
       backgroundColor: const Color.fromRGBO(239, 242, 247, 1),
       body: SafeArea(
@@ -164,7 +165,7 @@ class AddItemsView extends GetView<AddItemsController> {
                       TextFormField(
                         decoration: InputDecoration(
                           hintText: 'Amount',
-                          // filled: t rue,
+                          filled: true,
                           fillColor: Colors.white,
                           contentPadding:
                               const EdgeInsets.only(left: 15, right: 10),
@@ -236,7 +237,9 @@ class AddItemsView extends GetView<AddItemsController> {
                         height: 10,
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          controller.pickUpImage();
+                        },
                         child: Container(
                           height: 90,
                           width: 90,
@@ -244,15 +247,41 @@ class AddItemsView extends GetView<AddItemsController> {
                           decoration: BoxDecoration(
                               color: const Color.fromARGB(255, 255, 255, 255),
                               borderRadius: BorderRadius.circular(10)),
-                          child: const Center(
-                            child: Icon(
-                              Icons.add,
-                              size: 80,
-                              color: Colors.black,
-                            ),
-                          ),
+                          child: controller.gm == ""
+                              ? Icon(
+                                  Icons.add,
+                                  color: Color.fromRGBO(98, 144, 142, 1),
+                                  size: 45,
+                                )
+                              : Image.network(
+                                  controller.gm,
+                                  height: 50,
+                                ),
                         ),
-                      )
+                      ),
+                      SizedBox(width: 20),
+                      TextFormField(
+                        controller: controllerGambar,
+                        onChanged: (value) {
+                          print(value);
+                        },
+                        showCursor: true,
+                        obscureText: false,
+                        textCapitalization: TextCapitalization.sentences,
+                        decoration: InputDecoration(
+                          hintText: "Gambar Barang",
+                          hintStyle: TextStyle(color: Colors.grey.shade600),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: const BorderSide(color: Colors.white),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide(
+                                  color: Color.fromRGBO(98, 144, 142, 1))),
+                        ),
+                        style: TextStyle(color: Colors.grey[50], fontSize: 17),
+                      ),
                     ],
                   ),
                 ),
@@ -302,6 +331,7 @@ class AddItemsView extends GetView<AddItemsController> {
                             'amountItem': int.parse(controllerAmountItem.text),
                             'priceItem':
                                 int.parse(controllerPriceItem.text).toDouble(),
+                            'gambar': controller.gm.toString(),
                             'created': FirebaseAuth.instance.currentUser!.email,
                           });
 

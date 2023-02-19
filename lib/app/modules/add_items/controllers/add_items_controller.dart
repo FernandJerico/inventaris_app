@@ -1,8 +1,12 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../auth/controllers/auth_controller.dart';
 
@@ -74,7 +78,7 @@ class AddItemsController extends GetxController {
   void tambahStok(int dataStok, int dataSald) {
     // stok += dataStok;
     var a = stok + (dataStok);
-    var b = saldo + (dataSald);
+    var b = (saldo * dataStok) + (dataSald);
     FirebaseFirestore.instance
         .collection('inven')
         .doc(FirebaseAuth.instance.currentUser!.email)
@@ -92,8 +96,8 @@ class AddItemsController extends GetxController {
 
     print(a);
     update();
-    print('Stok Bertmaba menajdi : ${stok}');
-    print('saldo Bertmaba menajdi: ${saldo}');
+    print('Stok Bertmaba menjddi : ${stok}');
+    print('saldo Bertmaba menjadi: ${saldo}');
   }
 
   void clear() {
@@ -101,6 +105,38 @@ class AddItemsController extends GetxController {
     saldo = 0.obs;
     print('stok adalah : ${stok}');
     update();
+  }
+
+  String gm = '';
+
+  void gambar(value) {
+    gm = value;
+    print(gm);
+    update();
+  }
+
+  void pickUpImage() async {
+    final image = await ImagePicker().pickImage(
+        source: ImageSource.gallery,
+        maxHeight: 512,
+        maxWidth: 512,
+        imageQuality: 75);
+
+    Reference ref = FirebaseStorage.instance
+        .ref()
+        .child('FotoBarang/${gm.toString()}_${DateTime.now()}.jpg');
+    await ref.putFile(File(image!.path));
+    ref.getDownloadURL().then((value) {
+      // print(value);
+      // gambar(value);
+      gm = value;
+      update();
+
+      // setState(() {
+      // im = value;
+      // controller.gambar(value)
+      // });
+    });
   }
 
   void increment() => count.value++;

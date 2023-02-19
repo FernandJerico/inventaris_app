@@ -56,9 +56,9 @@ class ItemDetailView extends GetView<ItemDetailController> {
                         width: 200,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            image: const DecorationImage(
+                            image: DecorationImage(
                                 image: NetworkImage(
-                                  'https://i.imgur.com/APmrQQB.jpeg',
+                                  Get.arguments['Gambar'],
                                 ),
                                 fit: BoxFit.cover)),
                       ),
@@ -125,8 +125,7 @@ class ItemDetailView extends GetView<ItemDetailController> {
                           color: Color.fromRGBO(0, 0, 0, 67),
                         ),
                       ),
-                      Text(
-                        Get.arguments['ID'],
+                      Text(Get.arguments['ID'],
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w900,
@@ -223,7 +222,6 @@ class ItemDetailView extends GetView<ItemDetailController> {
                         ),
                       ),
                       Text('Rp.${Get.arguments['TotalHarga'].toString()},-',
-                      
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w900,

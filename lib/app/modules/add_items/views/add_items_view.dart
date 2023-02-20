@@ -1,31 +1,13 @@
-import 'dart:ffi';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:inventaris_app/app/modules/add_items/controllers/add_items_controller.dart';
-import 'package:inventaris_app/app/modules/items/controllers/item_controller.dart';
-import 'package:inventaris_app/app/modules/items/views/items_view.dart';
 
 import '../../../routes/app_pages.dart';
 
 class AddItemsView extends GetView<AddItemsController> {
-  // final controller = Get.put(AddItemsController());
-
-  void clearText() {
-    controller.idController.clear();
-    controller.nameController.clear();
-    controller.amountController.clear();
-    controller.priceController.clear();
-  }
-
-  // Widget _createItem(context) {
-  // final AddItemsController = Get.find();
-
-  // }
-
   @override
   Widget build(BuildContext context) {
     late String itemId;
@@ -37,6 +19,14 @@ class AddItemsView extends GetView<AddItemsController> {
     TextEditingController controllerAmountItem = TextEditingController();
     TextEditingController controllerPriceItem = TextEditingController();
     final controllerGambar = TextEditingController();
+
+    void clearText() {
+      controllerItemId.clear();
+      controllerItemName.clear();
+      controllerAmountItem.clear();
+      controllerPriceItem.clear();
+    }
+
     return Scaffold(
       backgroundColor: const Color.fromRGBO(239, 242, 247, 1),
       body: SafeArea(
@@ -153,7 +143,7 @@ class AddItemsView extends GetView<AddItemsController> {
                         height: 10,
                       ),
                       const Text(
-                        "Enter Amount :",
+                        "Input Stock :",
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w700,
@@ -164,7 +154,7 @@ class AddItemsView extends GetView<AddItemsController> {
                       ),
                       TextFormField(
                         decoration: InputDecoration(
-                          hintText: 'Amount',
+                          hintText: 'Stock',
                           filled: true,
                           fillColor: Colors.white,
                           contentPadding:
@@ -236,52 +226,59 @@ class AddItemsView extends GetView<AddItemsController> {
                       const SizedBox(
                         height: 10,
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          controller.pickUpImage();
+                      GetBuilder<AddItemsController>(
+                        init: AddItemsController(),
+                        initState: (_) {},
+                        builder: (_) {
+                          return GestureDetector(
+                            onTap: () {
+                              controller.pickUpImage();
+                            },
+                            child: Container(
+                              height: 90,
+                              width: 90,
+                              padding: const EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                  color:
+                                      const Color.fromARGB(255, 255, 255, 255),
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: controller.gm == ""
+                                  ? Icon(
+                                      Icons.add,
+                                      color: Color.fromRGBO(98, 144, 142, 1),
+                                      size: 45,
+                                    )
+                                  : Image.network(
+                                      controller.gm,
+                                      height: 50,
+                                    ),
+                            ),
+                          );
                         },
-                        child: Container(
-                          height: 90,
-                          width: 90,
-                          padding: const EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                              color: const Color.fromARGB(255, 255, 255, 255),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: controller.gm == ""
-                              ? Icon(
-                                  Icons.add,
-                                  color: Color.fromRGBO(98, 144, 142, 1),
-                                  size: 45,
-                                )
-                              : Image.network(
-                                  controller.gm,
-                                  height: 50,
-                                ),
-                        ),
                       ),
                       SizedBox(width: 20),
-                      TextFormField(
-                        controller: controllerGambar,
-                        onChanged: (value) {
-                          print(value);
-                        },
-                        showCursor: true,
-                        obscureText: false,
-                        textCapitalization: TextCapitalization.sentences,
-                        decoration: InputDecoration(
-                          hintText: "Gambar Barang",
-                          hintStyle: TextStyle(color: Colors.grey.shade600),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: const BorderSide(color: Colors.white),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide(
-                                  color: Color.fromRGBO(98, 144, 142, 1))),
-                        ),
-                        style: TextStyle(color: Colors.grey[50], fontSize: 17),
-                      ),
+                      // TextFormField(
+                      //   controller: controllerGambar,
+                      //   onChanged: (value) {
+                      //     print(value);
+                      //   },
+                      //   showCursor: true,
+                      //   obscureText: false,
+                      //   textCapitalization: TextCapitalization.sentences,
+                      //   decoration: InputDecoration(
+                      //     hintText: "Gambar Barang",
+                      //     hintStyle: TextStyle(color: Colors.grey.shade600),
+                      //     enabledBorder: OutlineInputBorder(
+                      //       borderRadius: BorderRadius.circular(10),
+                      //       borderSide: const BorderSide(color: Colors.white),
+                      //     ),
+                      //     focusedBorder: OutlineInputBorder(
+                      //         borderRadius: BorderRadius.circular(10),
+                      //         borderSide: BorderSide(
+                      //             color: Color.fromRGBO(98, 144, 142, 1))),
+                      //   ),
+                      //   style: TextStyle(color: Colors.grey[50], fontSize: 17),
+                      // ),
                     ],
                   ),
                 ),
@@ -323,7 +320,8 @@ class AddItemsView extends GetView<AddItemsController> {
                           //OBX STOK
                           var dataStok = int.parse(controllerAmountItem.text);
                           var dataSald = int.parse(controllerPriceItem.text);
-                          controller.tambahStok(dataStok, dataSald);
+                          var saldoAkhir = dataStok * dataSald;
+                          controller.tambahStok(dataStok, saldoAkhir);
                           //
                           FirebaseFirestore.instance.collection('item').add({
                             'itemId': controllerItemId.text,
@@ -334,7 +332,6 @@ class AddItemsView extends GetView<AddItemsController> {
                             'gambar': controller.gm.toString(),
                             'created': FirebaseAuth.instance.currentUser!.email,
                           });
-
                           Get.offAllNamed(Routes.BOTTOM_NAVBAR);
                         },
                         child: Container(

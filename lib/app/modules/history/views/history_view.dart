@@ -204,9 +204,6 @@ class HistoryView extends GetView<HistoryController> {
                                       ],
                                     ),
                                   ),
-                                  const SizedBox(
-                                    width: 25,
-                                  ),
                                   Padding(
                                     padding: const EdgeInsets.only(
                                         top: 19, left: 150),

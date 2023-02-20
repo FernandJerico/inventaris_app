@@ -21,7 +21,8 @@ class AddItemsController extends GetxController {
   late TextEditingController idController,
       nameController,
       amountController,
-      priceController;
+      priceController,
+      gambarController;
 
   final count = 0.obs;
   var stok = 0.obs;
@@ -33,6 +34,7 @@ class AddItemsController extends GetxController {
     nameController = TextEditingController();
     amountController = TextEditingController();
     priceController = TextEditingController();
+    gambarController = TextEditingController();
   }
 
   @override
@@ -46,6 +48,7 @@ class AddItemsController extends GetxController {
     nameController.dispose();
     amountController.dispose();
     priceController.dispose();
+    gambarController.dispose();
   }
 
   void tampilStok() async {
@@ -75,10 +78,10 @@ class AddItemsController extends GetxController {
     // return p;
   }
 
-  void tambahStok(int dataStok, int dataSald) {
+  void tambahStok(int dataStok, int saldoAkhir) {
     // stok += dataStok;
     var a = stok + (dataStok);
-    var b = (saldo * dataStok) + (dataSald);
+    var b = saldo + (saldoAkhir);
     FirebaseFirestore.instance
         .collection('inven')
         .doc(FirebaseAuth.instance.currentUser!.email)

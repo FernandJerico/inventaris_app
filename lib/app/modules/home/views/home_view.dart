@@ -27,22 +27,23 @@ class HomeView extends GetView<HomeController> {
               Padding(
                 padding: const EdgeInsets.only(right: 100, top: 10, bottom: 10),
                 child: Container(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
                       const Text(
                         "Hello",
                         style: TextStyle(
                             fontSize: 35, fontWeight: FontWeight.bold),
                       ),
-                      Text(
-                        'Welcome ' + user.email!,
-                        style: const TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.w600),
-                      ),
-                    ],
-                  ),
-                ),
+                      if (user.displayName != null)
+                        Text(
+                          'Welcome ' + user.displayName!,
+                          style: const TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.w600),
+                        )
+                      else
+                        Text('Welcome User!'),
+                    ])),
               ),
               const SizedBox(
                 height: 10,

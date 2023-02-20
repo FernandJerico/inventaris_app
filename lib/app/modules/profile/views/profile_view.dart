@@ -80,14 +80,21 @@ class ProfileView extends GetView<ProfileController> {
           ),
         ),
       ),
-      const SizedBox(
+      SizedBox(
         height: 15,
       ),
-      Text(
-        user.displayName!,
-        style:
-            GoogleFonts.montserrat(fontSize: 20, fontWeight: FontWeight.bold),
-      ),
+      if (user.displayName != null)
+        Text(
+          user.displayName!,
+          style:
+              GoogleFonts.montserrat(fontSize: 20, fontWeight: FontWeight.bold),
+        )
+      else
+        Text(
+          'Username',
+          style:
+              GoogleFonts.montserrat(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
       const SizedBox(
         height: 5,
       ),

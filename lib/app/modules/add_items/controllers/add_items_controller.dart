@@ -103,6 +103,20 @@ class AddItemsController extends GetxController {
     print('saldo Bertmaba menjadi: ${saldo}');
   }
 
+  void updateStok(int dataStokB, int saldoAkhirB) {
+    var c = stok;
+    var d = saldo;
+
+    FirebaseFirestore.instance
+        .collection('inven')
+        .doc(FirebaseAuth.instance.currentUser!.email)
+        .set({
+      'stok': c.toInt(),
+      'saldo': d.toInt(),
+      'pemilik': FirebaseAuth.instance.currentUser!.email,
+    });
+  }
+
   void clear() {
     stok = 0.obs;
     saldo = 0.obs;

@@ -158,6 +158,7 @@ class ItemView extends GetView<ItemController> {
                               "Harga":
                                   itemData.docs[index]['priceItem'].toString(),
                               "ID": itemData.docs[index]['itemId'],
+                              'IdCol': itemData.docs[index].id,
                               "TotalHarga": itemData.docs[index]['priceItem'] *
                                   itemData.docs[index]['amountItem'],
                             });
